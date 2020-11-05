@@ -20,9 +20,7 @@ public class XSLT {
             transformer = factory.newTransformer(xslt);
         } catch (TransformerConfigurationException ex) {
            logger.error("Проблемы с файлом конфигурации XSL",ex.getMessageAndLocation());
-
         }
-
 
         Source xml = new StreamSource(new File("1.xml"));
         try {

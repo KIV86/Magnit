@@ -32,7 +32,6 @@ public class ConnectionDB {
             } catch (ClassNotFoundException e) {
                 logger.error("Ошибка при загрузке драйвера JDBC, по указанному URL ", e);
             }
-
             // url,login,password  для подключения к БД нахожятся в файле database.properties
             Properties props = new Properties();
             logger.debug("подключение к файлу database.properties");

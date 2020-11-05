@@ -23,9 +23,7 @@ public class CreateXML {
     public String getQuery() {
         return query;
     }
-
     void createXML() {
-
 // В данном методе создается  XML документ с использованием сборки для XML- "Xembly".
 // ссылка на Xembly: https://www.xembly.org/
 // Maven зависимость :
@@ -34,7 +32,6 @@ public class CreateXML {
   <artifactId>xembly</artifactId>
   <version>0.22</version>
 </dependency*/
-
         logger.debug("Метод createXML(): создание XML документа и добавление в него значений с использованием сборки для XML- \"Xembly\"");
         logger.debug("Подключение к базе данных");
         FileWriter fw = null;
@@ -56,9 +53,7 @@ public class CreateXML {
             }
         } catch (SQLException | ImpossibleModificationException e) {
             logger.error("Ошибка, возникла при подколючении и работе с базой данных ", e);
-
         }
-
     }
 }
 

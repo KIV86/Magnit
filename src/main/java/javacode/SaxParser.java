@@ -20,15 +20,12 @@ public class SaxParser {
     public String getFileName() {
         return fileName;
     }
-
     public String getEntryName() {
         return entryName;
     }
-
     public String getFieldName() {
         return fieldName;
     }
-
     public long getCounter() {
         return counter;
     }

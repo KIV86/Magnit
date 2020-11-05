@@ -17,6 +17,18 @@ public class SaxParser {
     private  String entryName = "entry";
     private  String fieldName = "field";
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public String getEntryName() {
+        return entryName;
+    }
+
+    public String getFieldName() {
+        return fieldName;
+    }
+
     public long getCounter() {
         return counter;
     }
@@ -28,8 +40,8 @@ public class SaxParser {
             @Override
             //расчет суммы всех значений от 1...n согласно условию.
             public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-                if (qName.equals(entryName)) {
-                    counter = getCounter() + Integer.parseInt(attributes.getValue(fieldName));
+                if (qName.equals(getEntryName())) {
+                    counter = getCounter() + Integer.parseInt(attributes.getValue(getFieldName()));
                 }
             }
         };
@@ -37,7 +49,7 @@ public class SaxParser {
         var saxParserFactory = SAXParserFactory.newInstance();
         try {
             var parser = saxParserFactory.newSAXParser();
-            parser.parse(fileName, defaultHandler);
+            parser.parse(getFileName(), defaultHandler);
         } catch (
                 ParserConfigurationException | IOException | SAXException e) {
             logger.error("Возника ошибка во время работы SAXParser: ", e);

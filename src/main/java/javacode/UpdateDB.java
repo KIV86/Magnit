@@ -17,10 +17,6 @@ public class UpdateDB {
     public void setN(int n) {
         this.n = n;
     }
-    /*private void setN(int n) {
-        //сеттер введенного пользователем значения
-        UpdateDB.n = n;
-    }*/
 
     int scanNum() {
         // метод принимает от пользователя введенное значение

@@ -10,6 +10,7 @@ public class Program {
     private static Logger logger = LoggerFactory.getLogger(Program.class.getSimpleName());
 
 
+
     public static void main(String[] args) {
 
         logger.info("Начало работы приложения, время {}", LocalDateTime.now());

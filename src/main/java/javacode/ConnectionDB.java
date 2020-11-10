@@ -18,30 +18,30 @@ public class ConnectionDB {
     protected static Connection conn = null;
 
     public static Connection connectionDB() {
+        Properties props = new Properties();
+        String url = props.getProperty("url");
+        String username = props.getProperty("username");
+        String password = props.getProperty("password");
+
         logger.debug("вызов метода connectionDB: подключение JDBC драйвера и подключения к базе данных");
         if (conn == null) {
-
             logger.debug("подключение JDBC драйвера");
-//               Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-//            не обязательно использовать с JDBC
-
-//          url,login,password  для подключения к БД нахожятся в файле database.properties
-            Properties props = new Properties();
-            logger.debug("подключение к файлу database.properties");
+            //          url,login,password  для подключения к БД нахожятся в файле database.properties
+                        logger.debug("подключение к файлу database.properties");
             try (InputStream in = Files.newInputStream(Paths.get("database.properties"))) {
                 props.load(in);
             } catch (IOException e) {
                 logger.error("не найден файл с настройками для подключения к БД \"database.properties\"", e);
+                System.exit(1);
             }
-            String url = props.getProperty("url");
-            String username = props.getProperty("username");
-            String password = props.getProperty("password");
+
 
             logger.debug("Подключение к БД");
             try {
                 conn = DriverManager.getConnection(url, username, password);
             } catch (SQLException e) {
                 logger.error("Ошибка подключения к БД, проверте корректность адреса, логина и пароля ", e);
+                throw new  RuntimeException(e);
             }
             logger.debug("Подключение к БД прошло успешно");
 

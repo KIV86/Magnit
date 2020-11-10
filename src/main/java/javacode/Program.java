@@ -3,6 +3,7 @@ package javacode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class Program {
@@ -26,6 +27,13 @@ public class Program {
 
         SaxParser sp = new SaxParser();
         sp.parser();
+
+        try {
+            ConnectionDB.conn.close();
+            logger.debug("Connection закрыт");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
         long end = System.currentTimeMillis();
         long result = (end - start) / 1000;

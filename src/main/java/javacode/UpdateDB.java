@@ -53,17 +53,13 @@ public class UpdateDB {
                 //добавление значений из цикла в буфер
                 preparedStatement.addBatch();
                 if (i == getN()) {
-                    try {
-                        // добавление значений в БД "пачной"
-                        preparedStatement.executeBatch();
-                    } finally {
-                        preparedStatement.close();
-                    }
+                    // добавление значений в БД
+                    preparedStatement.executeBatch();
                     break;
                 }
                 i++;
             }
-            logger.debug("Добавление значений в БД прошло успешно, connection закрыт");
+            logger.debug("Добавление значений в БД прошло успешно");
         } catch (SQLException throwables) {
             logger.error("Ошибка при создании обьекта PreparedStatement", throwables);
         }

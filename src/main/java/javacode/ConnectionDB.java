@@ -17,7 +17,7 @@ public class ConnectionDB {
     private static Logger logger = LoggerFactory.getLogger(ConnectionDB.class.getSimpleName());
     protected static Connection conn = null;
 
-    public static Connection connectionDB() {
+    public static synchronized Connection connectionDB() {
 
         logger.debug("вызов метода connectionDB: подключение JDBC драйвера и подключения к базе данных");
         if (conn == null) {
